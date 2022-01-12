@@ -13,33 +13,27 @@
 </template>
 
 <script>
+export default {
+  name: "Home",
+};
+</script>
+
+<script setup>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
 import { useStore } from "vuex";
-export default {
-  name: "Home",
-  components: {
-    HelloWorld,
-  },
-  setup() {
-    const store = useStore();
-    const sLanguage = computed(() => {
-      return store.getters.getLanguage;
-    });
-    const { locale } = useI18n();
-    locale.value = sLanguage.value;
 
-    const handleChangeLanguage = (e) => {
-      store.dispatch("handSetLanguageState", e.target.value);
-      locale.value = e.target.value;
-    };
+const store = useStore();
+const sLanguage = computed(() => {
+  return store.getters.getLanguage;
+});
+const { locale } = useI18n();
+locale.value = sLanguage.value;
 
-    return {
-      sLanguage,
-      handleChangeLanguage,
-    };
-  },
+const handleChangeLanguage = (e) => {
+  store.dispatch("handSetLanguageState", e.target.value);
+  locale.value = e.target.value;
 };
 </script>

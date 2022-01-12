@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ t("Welcome_to_Your_Vue", { vueMessage: "vue.js" }) }}</h1>
+    <h1>{{ t("Welcome_to_local_Vue", { vueMessage: "vue.js" }) }}</h1>
     <p>
       {{ $t("configure_customize_project") }}<br />
       {{ $t("check_out_the") }}
@@ -104,38 +104,39 @@
 </template>
 
 <script>
-import { useI18n } from "vue-i18n";
 export default {
   name: "HelloWorld",
-  props: {
-    propsMsg: {
-      type: String,
-      default: "沒有傳值",
-    },
-  },
-  setup(props) {
-    const { t } = useI18n({
-      inheritLocale: true,
-      useScope: "local",
-    });
-
-    // Something todo ..
-
-    return { t, props };
-  },
 };
+</script>
+
+<script setup>
+import { useI18n } from "vue-i18n";
+
+const props = defineProps({
+  propsMsg: {
+    type: String,
+    default: "沒有傳值",
+  },
+});
+
+const { t } = useI18n({
+  inheritLocale: true,
+  useScope: "local",
+});
+
+// Something todo ..
 </script>
 
 <i18n>
 {
   "zh_tw": {
-    "Welcome_to_Your_Vue": "歡迎到{vueMessage}專案"
+    "Welcome_to_local_Vue": "歡迎到{vueMessage}專案"
   },
   "en": {
-    "Welcome_to_Your_Vue": "Welcome to Your {vueMessage} App"
+    "Welcome_to_local_Vue": "Welcome to Your {vueMessage} App"
   },
   "ja": {
-    "Welcome_to_Your_Vue": "{vueMessage}プロジェクトへようこそ"
+    "Welcome_to_local_Vue": "{vueMessage}プロジェクトへようこそ"
   },
 }
 </i18n>
