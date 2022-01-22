@@ -1,15 +1,49 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <el-config-provider :locale="localeElement">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view />
+  </el-config-provider>
 </template>
 
 <script>
 export default {
   name: "App",
 };
+</script>
+
+<script setup>
+import { ref, computed, watch, onMounted } from "vue";
+import zhTwElement from "element-plus/lib/locale/lang/zh-tw";
+import enElement from "element-plus/lib/locale/lang/en";
+const localeElement = ref(zhTwElement);
+import { useStore } from "vuex";
+const store = useStore();
+const sLanguage = computed(() => {
+  return store.getters.getLanguage;
+});
+
+const fnChangeLanguage = () => {
+  console.log(sLanguage.value);
+  if (sLanguage.value === "en") {
+    localeElement.value = enElement;
+  } else if (sLanguage.value === "zh_tw") {
+    localeElement.value = zhTwElement;
+  }
+};
+
+watch(
+  () => sLanguage.value,
+  () => {
+    fnChangeLanguage();
+  }
+);
+
+onMounted(() => {
+  fnChangeLanguage();
+});
 </script>
 
 <style lang="scss">
