@@ -3,6 +3,7 @@ const Components = require("unplugin-vue-components/webpack");
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
 module.exports = {
+  transpileDependencies: true,
   pluginOptions: {
     i18n: {
       locale: "zh_tw",
