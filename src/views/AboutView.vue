@@ -8,6 +8,7 @@
     placeholder="Pick a date"
     style="width: 100%"
   ></el-date-picker>
+  <el-select v-model="value" size="large"> </el-select>
 </template>
 
 <script setup>

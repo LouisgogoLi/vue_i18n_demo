@@ -1,9 +1,9 @@
 <template>
   <el-config-provider :locale="localeElement">
-    <div id="nav">
+    <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </nav>
     <router-view />
   </el-config-provider>
 </template>
@@ -55,7 +55,7 @@ onMounted(() => {
   color: #2c3e50;
 }
 
-#nav {
+nav {
   padding: 30px;
 
   a {
