@@ -1,5 +1,5 @@
 export default {
-  SetLanguageState(state, payload) {
+  setLanguageState(state, payload) {
     state.language = payload;
   },
 };

@@ -1,5 +1,5 @@
 export default {
   handSetLanguageState({ commit }, payload) {
-    commit("SetLanguageState", payload);
+    commit("setLanguageState", payload);
   },
 };
