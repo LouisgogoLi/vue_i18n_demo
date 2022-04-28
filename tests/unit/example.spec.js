@@ -1,10 +1,8 @@
-import { config, shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import HelloWorld from "@/components/HelloWorld.vue";
 
 import { createI18n } from "vue-i18n";
-config.global.mocks = {
-  $t: (text) => text,
-};
+
 const i18n = createI18n({
   legacy: false,
 });
